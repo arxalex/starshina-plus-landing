@@ -5,12 +5,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Старшина+ — Система управління військовим майном</title>
-  <meta name="description"
-    content="Старшина+ — сучасна система для обліку військового майна, видачі спорядження та ведення складу підрозділу. Зроблено для СОУ." />
+  <meta name="description" content="Старшина+ — сучасна система для обліку військового майна, видачі спорядження та ведення складу підрозділу." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
-    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
 </head>
@@ -26,8 +24,7 @@
       <div class="nav-links">
         <a href="#features">Можливості</a>
         <a href="#about">Про застосунок</a>
-        <a href="https://send.monobank.ua/jar/SGNACqxLA" class="btn-donate nav-donate" target="_blank" rel="noopener">❤️
-          Підтримати</a>
+        <a href="https://send.monobank.ua/jar/SGNACqxLA" class="btn-donate nav-donate" target="_blank" rel="noopener">❤️ Підтримати</a>
       </div>
       <button class="nav-toggle" id="navToggle" aria-label="Меню">
         <span></span><span></span><span></span>
@@ -42,9 +39,8 @@
     <div class="container hero-inner">
       <div class="hero-badge">🇺🇦 Зроблено для СОУ</div>
       <h1 class="hero-title">Облік майна підрозділу — <span class="gradient-text">нарешті зручно</span></h1>
-      <p class="hero-sub">Старшина+ — це веб і десктопний застосунок, що допомагає сержантам з матеріального
-        забезпечення вести склад, фіксувати видачу
-        спорядження, формувати звіти й контролювати залишки в реальному часі.</p>
+      <p class="hero-sub">Старшина+ — це веб і десктопний застосунок, що допомагає сержантам з матеріального забезпечення,
+        вести склад, фіксувати видачу спорядження, формувати звіти й контролювати залишки в реальному часі.</p>
       <div class="hero-actions">
         <a href="mailto:info@arxalex.com" class="btn-primary">Отримати демо</a>
       </div>
@@ -106,16 +102,15 @@
         <div class="feature-card">
           <div class="feature-icon">📦</div>
           <h3>Інвентар</h3>
-          <p>Ваше майно в одному місці. Бухгалтерські записи зрозумілою мовою. Знайте яке майно у вас в наявності або на
-            видачі і де воно
-            знаходиться.</p>
+          <p>Ваше майно в одному місці. Бухгалтерські записи зрозумілою мовою. Знайте яке майно у вас в наявності, видачі і
+            де воно знаходиться.</p>
           <img src="assets/screenshots/inventory.png" alt="Інвентаризація" class="feature-img" loading="lazy" />
         </div>
 
         <div class="feature-card">
           <div class="feature-icon">🎽</div>
           <h3>Видача спорядження</h3>
-          <p>Швидко оформляйте видачу майна бійцям. Обирайте особу, відмічайте позиції — система автоматично зробить
+          <p>Швидко оформляйте видачу майна бійцям. Обирайте особу, відмічайте позиції — система автоматично заносить
             запис.</p>
           <img src="assets/screenshots/gave-out.png" alt="Видача" class="feature-img" loading="lazy" />
         </div>
@@ -138,8 +133,8 @@
         <div class="feature-card">
           <div class="feature-icon">📓</div>
           <h3>Склад</h3>
-          <p>Ведіть облік всього майна підрозділу: кількість, номенклатурні номери, вартість, служба. Відстежуйте
-            залишки в реальному часі. Отримуйте та списуйте майно.</p>
+          <p>Ведіть облік всього майна підрозділу: кількість, номенклатурні номери, вартість, служба. Відстежуйте залишки в
+            реальному часі. Отримуйте та списуйте майно.</p>
           <img src="assets/screenshots/warehouse.png" alt="Склад" class="feature-img" loading="lazy" />
         </div>
 
@@ -154,7 +149,6 @@
       </div>
     </div>
   </section>
-
 
   <!-- WHY -->
   <section class="why" id="about">
@@ -219,8 +213,7 @@
       <div class="donate-emoji">🇺🇦</div>
       <h2>Підтримайте розробку</h2>
       <p>Застосунок розробляється у вільний час, безкоштовно, для Сил оборони України. Підтримайте проєкт.</p>
-      <a href="https://send.monobank.ua/jar/SGNACqxLA" class="btn-donate btn-donate--large" target="_blank"
-        rel="noopener">❤️ Задонатити</a>
+      <a href="https://send.monobank.ua/jar/SGNACqxLA" class="btn-donate btn-donate--large" target="_blank" rel="noopener">❤️ Задонатити</a>
     </div>
   </section>
 
@@ -248,12 +241,23 @@
     // Mobile menu toggle
     const toggle = document.getElementById('navToggle');
     const navLinks = document.querySelector('.nav-links');
+
+    let isAnimating = false; // Prevent rapid clicks
+
     toggle.addEventListener('click', () => {
+      if (isAnimating) return;
+      isAnimating = true;
+
       navLinks.classList.toggle('open');
       toggle.classList.toggle('active');
+
+      // Wait for the CSS transition to end before allowing new clicks
+      setTimeout(() => {
+        isAnimating = false;
+      }, 300); // Match the transition duration in CSS
     });
 
-    // Hero slideshow — cycle every 2 s
+    // Hero slideshow — cycle every 2 seconds
     const slides = document.querySelectorAll('.slideshow .slide');
     let current = 0;
     setInterval(() => {
