@@ -1,37 +1,97 @@
 <!DOCTYPE html>
 <html lang="uk">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Старшина+ — Система управління військовим майном</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="description" content="Старшина+ — сучасна система для обліку військового майна, видачі спорядження та ведення складу підрозділу." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+
+  <style>
+    /* Sticky Navbar with CSS */
+    .navbar {
+      position: sticky;
+      top: 0;
+      background: white;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+    }
+
+    /* Mobile menu toggling */
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      background: white;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      left: 0;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-links.open {
+      display: flex;
+    }
+
+    .nav-toggle {
+      display: block;
+    }
+
+    @media (min-width: 768px) {
+      .nav-links {
+        display: flex;
+        flex-direction: row;
+        position: static;
+        box-shadow: none;
+      }
+
+      .nav-toggle {
+        display: none;
+      }
+    }
+  </style>
 </head>
+
 <body>
+
   <!-- NAV -->
-  <nav class="navbar">
+  <nav class="navbar" id="navbar">
     <div class="container nav-inner">
       <a href="#" class="brand">
         <span class="brand-name">Старшина<span class="brand-accent">+</span></span>
       </a>
-      <div class="nav-links">
+      <div class="nav-links" id="navLinks">
         <a href="#features">Можливості</a>
         <a href="#about">Про застосунок</a>
-        <a href="https://send.monobank.ua/jar/SGNACqxLA" class="btn-donate">❤️ Підтримати</a>
+        <a href="https://send.monobank.ua/jar/SGNACqxLA" class="btn-donate nav-donate" target="_blank" rel="noopener">❤️ Підтримати</a>
       </div>
-      <button class="nav-toggle" id="navToggle">
-        <span></span>
-        <span></span>
-        <span></span>
+      <button class="nav-toggle" id="navToggle" aria-label="Меню">
+        <span></span><span></span><span></span>
       </button>
     </div>
   </nav>
 
-  <!-- JS to handle toggle -->
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <!-- Content here -->
+  </section>
+
+  <!-- Footer and additional content -->
+
   <script>
-    document.getElementById('navToggle').addEventListener('click', function() {
-      document.querySelector('.nav-links').classList.toggle('open');
-      this.classList.toggle('active');
+    // Mobile menu toggle purely with class additions
+    const toggleButton = document.getElementById('navToggle');
+    const navMenu = document.getElementById('navLinks');
+
+    toggleButton.addEventListener('click', () => {
+      navMenu.classList.toggle('open');
     });
   </script>
 </body>
+
 </html>
