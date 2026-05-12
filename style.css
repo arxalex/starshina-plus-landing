@@ -105,21 +105,44 @@ img {
   font-size: 1.125rem;
 }
 
-/* ---------- Navbar ---------- */
 .navbar {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 20px);
+  max-width: 1200px;
   z-index: 200;
-  padding: 16px 0;
+  padding: 12px 24px;
+  background: var(--bg-glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
   transition: var(--transition);
+}
+
+/* Island shadow on scroll */
+@supports (animation-timeline: scroll()) {
+  .navbar {
+    animation: navbar-scroll linear both;
+    animation-timeline: scroll();
+    animation-range: 0 20px;
+  }
+
+  @keyframes navbar-scroll {
+    to {
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+  }
 }
 
 .nav-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
+  padding: 0;
 }
 
 .brand {
@@ -175,10 +198,9 @@ img {
 }
 
 .nav-state:checked~.navbar {
-  height: 100vh;
-  background: var(--bg-glass);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  height: auto;
+  border-radius: var(--radius-lg);
+  top: 20px;
 }
 
 .nav-state:checked~.navbar .nav-links {
@@ -214,7 +236,7 @@ img {
 .hero-glow-1 {
   width: 600px;
   height: 600px;
-  background: radial-gradient(circle, rgba(253, 137, 10, 0.18) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(253, 136, 10, 0.447) 0%, transparent 70%);
   top: -150px;
   left: -100px;
 }
@@ -222,7 +244,7 @@ img {
 .hero-glow-2 {
   width: 500px;
   height: 500px;
-  background: radial-gradient(circle, rgba(253, 137, 10, 0.1) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(253, 136, 10, 0.375) 0%, transparent 70%);
   bottom: 0;
   right: -100px;
 }
@@ -426,7 +448,7 @@ img {
 
 .features {
   padding: 100px 0;
-  background-image: radial-gradient(circle at 15% 40%, rgba(253, 137, 10, 0.07) 0%, transparent 60%);
+  background-image: radial-gradient(circle at 15% 40%, rgba(253, 136, 10, 0.134) 0%, transparent 60%);
 }
 
 .features-grid {
@@ -491,7 +513,7 @@ img {
 /* ---------- Why & Donate ---------- */
 .why {
   padding: 100px 0;
-  background-image: radial-gradient(circle at 80% 90%, rgba(253, 137, 10, 0.06) 0%, transparent 60%);
+  background-image: radial-gradient(circle at 80% 90%, rgba(253, 136, 10, 0.187) 0%, transparent 60%);
 }
 
 .why-inner {
@@ -660,23 +682,7 @@ img {
 }
 
 /* Scroll-Driven Animations */
-@supports (animation-timeline: scroll()) {
-  .navbar {
-    animation: navbar-scroll linear both;
-    animation-timeline: scroll();
-    animation-range: 0 20px;
-  }
-
-  @keyframes navbar-scroll {
-    to {
-      background: var(--bg-glass);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border);
-      padding: 12px 0;
-    }
-  }
-}
+@supports (animation-timeline: scroll()) {}
 
 @supports (animation-timeline: view()) {
 
@@ -747,15 +753,21 @@ img {
   .nav-links {
     display: none;
     position: absolute;
-    top: 80px;
+    top: calc(100% + 12px);
     left: 0;
     right: 0;
+    background: var(--bg-glass);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
     flex-direction: column;
     align-items: center;
-    gap: 40px;
-    padding: 20px 0;
+    gap: 32px;
+    padding: 32px 24px;
     font-size: 1.2rem;
     width: 100%;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
   }
 
   .nav-toggle {
