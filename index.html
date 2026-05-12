@@ -1,17 +1,11 @@
 <!DOCTYPE html>
 <html lang="uk">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Старшина+ — Система управління військовим майном</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 </head>
-
 <body>
   <!-- NAV -->
   <nav class="navbar">
@@ -32,41 +26,12 @@
     </div>
   </nav>
 
-  <!-- HERO SECTION -->
-  <section id="hero">
-    <h1>Сучасна система для управління військовим майном</h1>
-    <p>Зручний і швидкий доступ до даних.</p>
-  </section>
-
-  <!-- FEATURES SECTION -->
-  <section id="features">
-    <h2>Особливості</h2>
-    <ul>
-      <li>Реєстр військового майна</li>
-      <li>Швидкий пошук і фільтри</li>
-      <li>Інтеграція звітності</li>
-    </ul>
-  </section>
-
-  <!-- ABOUT SECTION -->
-  <section id="about">
-    <h2>Про застосунок</h2>
-    <p>Старшина+ — це зручний інструмент для обліку та менеджменту військових ресурсів.</p>
-  </section>
-
-  <!-- FOOTER SECTION -->
-  <footer>
-    <p>Розроблено <a href="https://arxalex.com" target="_blank" rel="noopener">arxalex</a></p>
-    <p>Підтримайте проект ❤️</p>
-  </footer>
-
-  <!-- Mobile navigation toggle script -->
+  <!-- JS to handle toggle -->
   <script>
-    document.getElementById('navToggle').addEventListener('click', function () {
+    document.getElementById('navToggle').addEventListener('click', function() {
       document.querySelector('.nav-links').classList.toggle('open');
       this.classList.toggle('active');
     });
   </script>
 </body>
-
 </html>
