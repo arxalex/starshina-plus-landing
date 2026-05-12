@@ -18,18 +18,19 @@
 <body>
 
   <!-- NAV -->
+  <input type="checkbox" id="nav-state" class="nav-state">
   <nav class="navbar" id="navbar">
     <div class="container nav-inner">
       <a href="#" class="brand">
         <span class="brand-name">Старшина<span class="brand-accent">+</span></span>
       </a>
-      <div class="nav-links">
+      <div class="nav-links" id="navLinks">
         <a href="#features">Можливості</a>
         <a href="#about">Про застосунок</a>
       </div>
-      <button class="nav-toggle" id="navToggle" aria-label="Меню">
+      <label for="nav-state" class="nav-toggle" aria-label="Меню">
         <span></span><span></span><span></span>
-      </button>
+      </label>
     </div>
   </nav>
 
@@ -45,8 +46,6 @@
         спорядження, формувати звіти й контролювати залишки в реальному часі.</p>
       <div class="hero-actions">
         <a href="mailto:info@arxalex.com" class="btn-primary">Отримати демо</a>
-        <a href="https://send.monobank.ua/jar/SGNACqxLA" class="btn-donate" target="_blank" rel="noopener">❤️ Підтримати
-          проєкт</a>
       </div>
       <div class="hero-screenshot">
         <div class="screenshot-frame">
@@ -216,7 +215,6 @@
   <section class="donate-cta">
     <div class="donate-glow"></div>
     <div class="container donate-inner">
-      <div class="donate-emoji">🇺🇦</div>
       <h2>Підтримайте розробку</h2>
       <p>Застосунок розробляється у вільний час, безкоштовно, для Сил оборони України. Підтримайте проєкт.</p>
       <a href="https://send.monobank.ua/jar/SGNACqxLA" class="btn-donate btn-donate--large" target="_blank"
@@ -239,27 +237,6 @@
   </footer>
 
   <script>
-    // Sticky nav shadow via CSS class
-    const navbar = document.getElementById('navbar');
-    const onScroll = () => navbar.classList.toggle('scrolled', window.scrollY > 20);
-    window.addEventListener('scroll', onScroll, { passive: true });
-
-    // Mobile menu toggle
-    const toggle = document.getElementById('navToggle');
-    const navLinks = document.querySelector('.nav-links');
-    toggle.addEventListener('click', () => {
-      const isOpen = navLinks.classList.toggle('open');
-      toggle.classList.toggle('active', isOpen);
-    });
-
-    // Close mobile menu on link click
-    navLinks.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => {
-        navLinks.classList.remove('open');
-        toggle.classList.remove('active');
-      });
-    });
-
     // Hero slideshow — cycle every 2 s
     const slides = document.querySelectorAll('.slideshow .slide');
     let current = 0;
@@ -268,6 +245,13 @@
       current = (current + 1) % slides.length;
       slides[current].classList.add('active');
     }, 2000);
+
+    // Close mobile menu on link click
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('nav-state').checked = false;
+      });
+    });
   </script>
 </body>
 
