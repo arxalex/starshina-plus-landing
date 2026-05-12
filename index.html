@@ -26,8 +26,6 @@
       <div class="nav-links">
         <a href="#features">Можливості</a>
         <a href="#about">Про застосунок</a>
-        <a href="https://send.monobank.ua/jar/SGNACqxLA" class="btn-donate nav-donate" target="_blank" rel="noopener">❤️
-          Підтримати</a>
       </div>
       <button class="nav-toggle" id="navToggle" aria-label="Меню">
         <span></span><span></span><span></span>
@@ -241,18 +239,25 @@
   </footer>
 
   <script>
-    // Sticky nav shadow
+    // Sticky nav shadow via CSS class
     const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      navbar.classList.toggle('scrolled', window.scrollY > 20);
-    });
+    const onScroll = () => navbar.classList.toggle('scrolled', window.scrollY > 20);
+    window.addEventListener('scroll', onScroll, { passive: true });
 
     // Mobile menu toggle
     const toggle = document.getElementById('navToggle');
     const navLinks = document.querySelector('.nav-links');
     toggle.addEventListener('click', () => {
-      navLinks.classList.toggle('open');
-      toggle.classList.toggle('active');
+      const isOpen = navLinks.classList.toggle('open');
+      toggle.classList.toggle('active', isOpen);
+    });
+
+    // Close mobile menu on link click
+    navLinks.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        toggle.classList.remove('active');
+      });
     });
 
     // Hero slideshow — cycle every 2 s
@@ -263,21 +268,6 @@
       current = (current + 1) % slides.length;
       slides[current].classList.add('active');
     }, 2000);
-
-    // Scroll-in animation
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('visible');
-          observer.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.feature-card, .why-list li, .stat-item').forEach(el => {
-      el.classList.add('animate-on-scroll');
-      observer.observe(el);
-    });
   </script>
 </body>
 
