@@ -6,18 +6,24 @@
   --primary: #FD890A;
   --primary-hover: #E67A00;
   --primary-glow: rgba(253, 137, 10, 0.25);
+  --primary-blick: rgba(253, 136, 10, 0.447);
+  --primary-blick-soft: rgba(253, 136, 10, 0.375);
+
   --bg: #0E0D0B;
   --bg-glass: rgba(14, 13, 11, 0.9);
   --surface: #1A1917;
   --surface-2: #222120;
   --border: rgba(255, 255, 255, 0.08);
+
   --text: #EFEFEF;
   --muted: #A1A09E;
   --success: #10B981;
+
   --radius-sm: 10px;
   --radius-md: 16px;
   --radius-lg: 24px;
   --radius-pill: 999px;
+
   --shadow-glow: 0 0 40px rgba(253, 137, 10, 0.15);
   --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.4);
   --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
@@ -105,6 +111,7 @@ img {
   font-size: 1.125rem;
 }
 
+/* ---------- Navbar ---------- */
 .navbar {
   position: fixed;
   top: 10px;
@@ -120,21 +127,6 @@ img {
   border: 1px solid var(--border);
   border-radius: var(--radius-pill);
   transition: var(--transition);
-}
-
-/* Island shadow on scroll */
-@supports (animation-timeline: scroll()) {
-  .navbar {
-    animation: navbar-scroll linear both;
-    animation-timeline: scroll();
-    animation-range: 0 20px;
-  }
-
-  @keyframes navbar-scroll {
-    to {
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-    }
-  }
 }
 
 .nav-inner {
@@ -197,12 +189,6 @@ img {
   transition: var(--transition);
 }
 
-.nav-state:checked~.navbar {
-  height: auto;
-  border-radius: var(--radius-lg);
-  top: 20px;
-}
-
 .nav-state:checked~.navbar .nav-links {
   display: flex !important;
 }
@@ -236,7 +222,7 @@ img {
 .hero-glow-1 {
   width: 600px;
   height: 600px;
-  background: radial-gradient(circle, rgba(253, 136, 10, 0.447) 0%, transparent 70%);
+  background: radial-gradient(circle, var(--primary-blick) 0%, transparent 70%);
   top: -150px;
   left: -100px;
 }
@@ -244,7 +230,7 @@ img {
 .hero-glow-2 {
   width: 500px;
   height: 500px;
-  background: radial-gradient(circle, rgba(253, 136, 10, 0.375) 0%, transparent 70%);
+  background: radial-gradient(circle, var(--primary-blick-soft) 0%, transparent 70%);
   bottom: 0;
   right: -100px;
 }
@@ -513,7 +499,7 @@ img {
 /* ---------- Why & Donate ---------- */
 .why {
   padding: 100px 0;
-  background-image: radial-gradient(circle at 80% 90%, rgba(253, 136, 10, 0.187) 0%, transparent 60%);
+  background-image: radial-gradient(circle at 80% 50%, rgba(253, 136, 10, 0.187) 0%, transparent 60%);
 }
 
 .why-inner {
@@ -682,7 +668,19 @@ img {
 }
 
 /* Scroll-Driven Animations */
-@supports (animation-timeline: scroll()) {}
+@supports (animation-timeline: scroll()) {
+  .navbar {
+    animation: navbar-scroll linear both;
+    animation-timeline: scroll();
+    animation-range: 0 20px;
+  }
+
+  @keyframes navbar-scroll {
+    to {
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+  }
+}
 
 @supports (animation-timeline: view()) {
 
